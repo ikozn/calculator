@@ -16,20 +16,17 @@ WEB开发基础期课程的课程设计，要求做一个计算器，但只给�
 这只是一个使用原生JS实现的仿WIN10计算器，点击[这里](https://blog.ikozn.com/calculator/)使用
 
 ![init](https://i.loli.net/2020/07/02/I7DNuRx8E9zQsXG.png)
-
-<center>初始化界面</center>
+初始化界面
 
 
 
 
 
 ![add](https://i.loli.net/2020/07/02/n6j3ETCbmepWiPR.png)
-
-<center>加法</center>
+加法
 
 ![factorial](https://i.loli.net/2020/07/02/1g36Rx8aPY2qnKp.png)
-
-<center>阶乘</center>
+阶乘
 
 
 
