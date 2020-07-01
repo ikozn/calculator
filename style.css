@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  height: 100%;
+  width: 100%;
+}
+
+*::-webkit-scrollbar {
+  border-radius: 4px;
+  width: 4px;
+  height: 4px;
+  background: hsla(0, 0%, 48.6%, 0.36);
+}
+*::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+
+/*滚动条中间滑动部分*/
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.22);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.bg {
+  height: 100%;
+  width: 100%;
+  background-image: url(images/wallpaper.jpg);
+  background-size: cover;
+  background-position: left bottom;
+}
+
+#app {
+  height: 51rem;
+  width: 38rem;
+  display: flex;
+  background-color: #f2f2f2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-flow: column;
+  padding: 0.4rem;
+  border: 1px solid #6f7d90;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
+}
+
+.screen {
+  width: 100%;
+  height: 18rem;
+  padding: 1rem;
+}
+
+.formula,
+.input {
+  display: block;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.formula {
+  font-size: 1.5rem;
+  height: 3rem;
+  color: #5c5c5c;
+  user-select: none;
+  overflow: auto;
+}
+
+.input {
+  font-size: 5rem;
+  font-weight: 700;
+  overflow: auto;
+}
+
+.input::selection {
+  background: #68768a;
+  color: white;
+}
+
+.memory {
+  display: grid;
+  height: 3.3rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.memory-btn {
+  border: 1px solid transparent;
+  background-color: transparent;
+  outline: none;
+  user-select: none;
+}
+
+.memory-btn.disable {
+  border: 0px solid transparent;
+  color: #b2bcc3;
+}
+
+.memory-btn.disable:hover {
+  background-color: transparent;
+}
+
+
+
+.ctrl {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    'o o o o'
+    'n n n o'
+    'n n n o'
+    'n n n o'
+    'n n n o'
+    'o o o o';
+
+  grid-gap: 0.2rem;
+}
+
+.ctrl button ,#negate{
+  border: 1px solid transparent;
+  /* border-image: radial-gradient(circle at 0px 0px, #b0b0b0,transparent);
+  border-image-slice: 10; */
+  background-color: #fdfdfd;
+  outline: none;
+  font-size: 2rem;
+
+  user-select: none;
+}
+
+.ctrl button:hover,.memory-btn:hover {
+  background-color: #e0e0e0;
+
+  /* border: 1px solid #a0a0a0; */
+}
+
+.ctrl button:active,.memory-btn:active {
+  background-color: #d0d0d0;
+}
+
+sub {
+  background-color: transparent;
+}
+
+.ctrl .operation {
+  background-color: #f7f7f7;
+  font-family: Didot, Times, Georgia, 'Times New Roman', Times, serif;
+}
+
+.equal {
+  background-color: #bbc1c9 !important;
+}
+
+.equal:hover {
+  background-color: #828d9b !important;
+}
+.equal:active {
+  background-color: #68768a !important;
+}
+
+.number {
+  font-weight: 700;
+}
+
+#close:hover {
+  background-color: #e81123;
+  color: white;
+}
+
+#close:active {
+  background-color: #f1707a;
+  color: white;
+}
+
+.click {
+  background-color: #d0d0d0 !important;
+}

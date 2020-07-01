@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="bg">
+        <section id="app">
+
+            <!-- 显示屏 -->
+            <div class="screen">
+                <!-- 当前算式 -->
+                <div class="formula">
+
+                </div>
+
+                <!-- 当前结果 -->
+                <div class="input">0</div>
+            </div>
+
+
+            <!-- 操作按钮 -->
+            <div class="memory">
+                <button class="memory-btn disable" id="MC">MC</button>
+                <button class="memory-btn disable" id="MR">MR</button>
+                <button class="memory-btn" id="M+">M+</button>
+                <button class="memory-btn" id="M-">M-</button>
+                <button class="memory-btn" id="MS">MS</button>
+                <button class="memory-btn disable" id="M">M</button>
+                
+            </div>
+            <div class="ctrl">
+                <button class="operation" id="clear">C</button>
+                <button class="operation" id="sqrt">√(x)</button>
+                <button class="operation" id="sqr">x<sup>2</sup></button>
+                <button class="operation" id="fact">x!</button>
+                <button class="number" id="7">7</button>
+                <button class="number" id="8">8</button>
+                <button class="number" id="9">9</button>
+                <button class="operation" id="×">×</button>
+                <button class="number" id="4">4</button>
+                <button class="number" id="5">5</button>
+                <button class="number" id="6">6</button>
+                <button class="operation" id="÷">÷</button>
+                <button class="number" id="1">1</button>
+                <button class="number" id="2">2</button>
+                <button class="number" id="3">3</button>
+                <button class="operation" id="-">-</button>
+                <button class="operation" id="negate"><span><sup>+</sup>/<sub>-</sub></span></button>
+                <button class="number" id="0">0</button>
+                <button class="number" id=".">.</button>
+                <button class="operation" id="+">+</button>
+                <button class="operation" id="close">×</button>
+                <button class="operation" id="clearEntry">CE</button>
+                <button class="operation" id="pi">π</button>
+                <button class="operation equal" id="=">=</button>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
