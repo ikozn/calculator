@@ -1,26 +1,35 @@
-# JS仿WIN10计算器
+# 仿WIN10计算器
 
-[![calculator-win10 JavaScript](https://img.shields.io/badge/calculator%20win10-JavaScript-brightgreen.svg?style=flat-square)](https://github.com/ikozn/calculator)
+[![calculator-win10 JavaScript](https://img.shields.io/badge/language-Vanilla%20JavaScript-green?style=flat-square)](https://github.com/ikozn/calculator)
+
+使用Vanilla JavaScript 实现的仿WIN10计算器，点击[这里](https://blog.ikozn.com/calculator/)使用
+
+
 
 ## 背景
 
-WEB开发基础期末作业
+WEB开发基础期课程的课程设计，要求做一个计算器，但只给了一个计算器的截图，具体交互逻辑等细节都不知道，所以干脆仿照着WIN10的计算器做了一个。
+
+
 
 ## 使用说明
-这只是一个使用原生JS实现的仿WIN10计算器，点击[这里](https://blog.ikozn.com/calculator/)打开 
+这只是一个使用原生JS实现的仿WIN10计算器，点击[这里](https://blog.ikozn.com/calculator/)使用
+
+![init](https://i.loli.net/2020/07/02/I7DNuRx8E9zQsXG.png)
+
+<center>初始化界面</center>
 
 
 
-- [x] 运算
-  - [x] 四则运算
-  - [x] 相反数切换
-  - [x] 整数正数阶乘
-  - [x] 平方
-  - [x] 开平方
-- [x] 交互
-  - [x] 键盘操作
-  - [x] 模仿WIN10按钮边框鉴别动画
-  - [x] 模仿WIN10按钮高亮动画
+
+
+![add](https://i.loli.net/2020/07/02/n6j3ETCbmepWiPR.png)
+
+<center>加法</center>
+
+![factorial](https://i.loli.net/2020/07/02/1g36Rx8aPY2qnKp.png)
+
+<center>阶乘</center>
 
 
 
