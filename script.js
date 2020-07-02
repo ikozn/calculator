@@ -7,6 +7,25 @@ const CalController = (function () {
     equaled: false, //刚按过等于号
     formula: [0] //当前公式
   }
+
+  //伽马函数
+  const gamma = function(n) {  // 精确到大约15位小数
+    //一些魔法常数
+    var g = 7, // g表示所需的精度，p是插入Lanczos公式的p[i]值
+        p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
+    if(n < 0.5) {
+      return Math.PI / Math.sin(n * Math.PI) / gamma(1 - n);
+    }
+    else {
+      n--;
+      var x = p[0];
+      for(var i = 1; i < g + 2; i++) {
+        x += p[i] / (n + i);
+      }
+      var t = n + g + 0.5;
+      return Math.sqrt(2 * Math.PI) * Math.pow(t, (n + 0.5)) * Math.exp(-t) * x;
+    }
+}
   //平方
   const sqr = function (num) {
     return num * num
@@ -17,6 +36,14 @@ const CalController = (function () {
   }
   //阶乘
   const fact = function (num) {
+    if (num<0) return NaN;
+    const isMinus = num.toString().includes('.');
+
+    if (isMinus) {
+      console.log(gamma(num + 1),':',num)
+      return gamma(num + 1);
+    }
+
     let result = 1
     for (let i = 1; i <= num; i++) {
       result *= i
