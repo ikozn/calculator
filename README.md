@@ -15,18 +15,23 @@ WEB开发基础课程的课程设计，要求做一个计算器，但只给了�
 ## 使用说明
 这只是一个使用原生JS实现的仿WIN10计算器，点击[这里](https://blog.ikozn.com/calculator/)使用
 
-![init](https://i.loli.net/2020/07/02/I7DNuRx8E9zQsXG.png)
-初始化界面
+<div style="text-align: center;"><img src="https://i.loli.net/2020/07/02/I7DNuRx8E9zQsXG.png" alt="初始化页面"/></div>
+
+<p style="text-align: center;">初始化页面</p>
 
 
 
+<div style="text-align: center;"><img src="https://i.loli.net/2020/07/02/n6j3ETCbmepWiPR.png" alt="加法"/></div>
+
+<p style="text-align: center;">加法</p>
 
 
-![add](https://i.loli.net/2020/07/02/n6j3ETCbmepWiPR.png)
-加法
 
-![factorial](https://i.loli.net/2020/07/02/1g36Rx8aPY2qnKp.png)
-阶乘
+<div style="text-align: center;"><img src="https://i.loli.net/2020/07/02/1g36Rx8aPY2qnKp.png" alt="阶乘"/></div>
+
+<p style="text-align: center;">阶乘</p>
+
+
 
 
 
