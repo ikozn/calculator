@@ -475,7 +475,7 @@ const controller = (function (CalCtrl, UICtrl) {
     //操作按钮
     document.querySelectorAll(DOM.operation).forEach(el => {
       el.addEventListener('click', e => {
-        const operate = e.target.getAttribute('id')
+        const operate = e.target.closest(DOM.operation).getAttribute('id')
         operateHandler(operate)
       })
     })
