@@ -9,23 +9,22 @@ const CalController = (function () {
   }
 
   //伽马函数
-  const gamma = function(n) {  // 精确到大约15位小数
+  const gamma = function (n) { // 精确到大约15位小数
     //一些魔法常数
     var g = 7, // g表示所需的精度，p是插入Lanczos公式的p[i]值
-        p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
-    if(n < 0.5) {
+      p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
+    if (n < 0.5) {
       return Math.PI / Math.sin(n * Math.PI) / gamma(1 - n);
-    }
-    else {
+    } else {
       n--;
       var x = p[0];
-      for(var i = 1; i < g + 2; i++) {
+      for (var i = 1; i < g + 2; i++) {
         x += p[i] / (n + i);
       }
       var t = n + g + 0.5;
       return Math.sqrt(2 * Math.PI) * Math.pow(t, (n + 0.5)) * Math.exp(-t) * x;
     }
-}
+  }
   //平方
   const sqr = function (num) {
     return num * num
@@ -36,11 +35,10 @@ const CalController = (function () {
   }
   //阶乘
   const fact = function (num) {
-    if (num<0) return NaN;
+    if (num < 0) return NaN;
     const isMinus = num.toString().includes('.');
 
     if (isMinus) {
-      console.log(gamma(num + 1),':',num)
       return gamma(num + 1);
     }
 
@@ -60,8 +58,9 @@ const CalController = (function () {
 
   return {
     //计算
-    calculate: function () {
-      let calStr = ''
+    calculate: function (calStr) {
+      //如果传入算式则进行计算算式
+      if (calStr !== undefined) {return eval(calStr)};
 
       const formulaLen = data.formula.length
       const top = data.formula[formulaLen - 1]
@@ -92,15 +91,24 @@ const CalController = (function () {
       //1. 判断栈顶元素
       const topEl = data.formula[data.formula.length - 1]
       if ('+-×÷'.includes(topEl)) {
-        //计算符号
+        //2.1 - 如果栈顶是符号则推入新操作数
         data.formula.push(`${fun}(${num})`)
-      } else if (isNaN(topEl)) {
-        //函数
-        data.formula[data.formula.length - 1] = `${fun}(${topEl})`
       } else {
-        //数字
-        data.formula[data.formula.length - 1] = `${fun}(${num})`
+        //2.3 - 如果栈顶是数字则直接进行嵌套
+        data.formula[data.formula.length - 1] = `${fun}(${topEl})`
       }
+
+      // else if (isNaN(topEl)) {
+      //   //2.2 - 如果栈顶已经是函数则再嵌套一层
+      //   data.formula[data.formula.length - 1] = `${fun}(${topEl})`
+      // } 
+
+      //更新操作数
+      this.updateOperand(this.calculate(this.getFormulaTop()))
+    },
+    //更新操作数
+    updateOperand: function (num) {
+      data.operand = num;
     },
     //推入操作符
     pushOperate: function (operate) {
@@ -128,7 +136,8 @@ const CalController = (function () {
       }
 
       if (!data.equaled) {
-        data.operand = number
+        this.updateOperand(number)
+        // data.operand = number
       }
     },
     //获取当前结果
@@ -142,6 +151,9 @@ const CalController = (function () {
     //获取当前式子
     getFormula: function () {
       return data.formula
+    },
+    getFormulaTop: function () {
+      return data.formula[data.formula.length - 1]
     },
     //获取操作符
     getCurOperate: function () {
@@ -170,6 +182,9 @@ const CalController = (function () {
     //设置算式
     setFormula: function (num) {
       data.formula = [num]
+    },
+    formulaPop: function () {
+      return data.formula.pop()
     },
     //初始化
     init: function () {
@@ -405,13 +420,13 @@ const controller = (function (CalCtrl, UICtrl) {
     CalCtrl.useFun(fun, number)
 
     //3. 计算结果
-    CalCtrl.calculate()
+    const funResult =  CalCtrl.calculate(CalCtrl.getFormulaTop())
 
     //4. 显示算式
     UICtrl.showFormula(CalCtrl.getFormula())
 
-    //5. 显示结果
-    UICtrl.showCurResult(CalCtrl.getCurResult())
+    //5. 显示使用函数计算的结果
+    UICtrl.showCurResult(funResult)
 
     //6. 设置当前显示模式为临时
     UICtrl.setModel('temp')
@@ -486,15 +501,26 @@ const controller = (function (CalCtrl, UICtrl) {
   //数字按钮处理
   const numberHandler = function (number) {
     const newNumber = parseFloat(UICtrl.inputNumber(number))
-    CalCtrl.pushNumber(newNumber)
+    const formulaTop = CalCtrl.getFormulaTop()
 
     if (CalCtrl.getEqualed()) {
+      //如果上一个操作是等于
       //1. 隐藏算式
       UICtrl.hiddenFormula()
 
       //2. 重置算式为当前数字
       CalCtrl.setFormula(newNumber)
+    } else if (isNaN(formulaTop) && !"+-×÷=".includes(formulaTop)) {
+      //如果栈顶元素是函数
+      //1. 去掉栈顶元素
+      CalCtrl.formulaPop()
+
+      //2. 更新算式显示
+      UICtrl.showFormula(CalCtrl.getFormula())
     }
+
+    CalCtrl.pushNumber(newNumber)
+
   }
 
   //添加事件监听
@@ -515,6 +541,7 @@ const controller = (function (CalCtrl, UICtrl) {
       })
     })
 
+    //键盘事件监听
     document.addEventListener('keydown', e => {
       const key = [
         '+',
