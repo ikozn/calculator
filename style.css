@@ -117,14 +117,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-template-areas:
-    'o o o o'
-    'n n n o'
-    'n n n o'
-    'n n n o'
-    'n n n o'
-    'o o o o';
-
+  flex: 1;
   grid-gap: 0.2rem;
 }
 
