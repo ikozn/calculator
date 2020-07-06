@@ -27,7 +27,7 @@ const CalController = (function () {
   }
   //平方
   const sqr = function (num) {
-    return num * num
+    return Math.pow(num,2)
   }
   //开方
   const sqrt = function (num) {
