@@ -13,7 +13,17 @@ WEB开发基础课程的课程设计，要求做一个计算器，但只给了�
 
 
 ## 使用说明
-这只是一个使用原生JS实现的仿WIN10计算器，点击[这里](https://blog.ikozn.com/calculator/)使用
+这只是一个使用原生JS实现的仿WIN10计算器，点击[这里](https://blog.ikozn.com/calculator/)开始使用
+
+
+
+使用鼠标或键盘都可以进行输入，实现了小数阶乘。
+
+
+
+## 预览
+
+
 
 <div align="center"><img src="https://i.loli.net/2020/07/02/I7DNuRx8E9zQsXG.png" alt="初始化页面"/></div>
 
